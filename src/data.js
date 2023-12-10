@@ -22,3 +22,26 @@ export const homeFeatures = [
 		subtitle: "We keep our customers happy and resolves issues quickly",
 	},
 ];
+
+export const homeProducts = [
+	{
+		icon: "/images/savings-icon-home.svg",
+		title: "General Savings",
+		subtitle: "Lorem ipsum dolor, Lorem ipsum dolorLorem ipsum dolor",
+	},
+	{
+		icon: "/images/community-home.svg",
+		title: "Community Mgt",
+		subtitle: "Lorem ipsum dolor, Lorem ipsum dolorLorem ipsum dolor",
+	},
+	{
+		icon: "/images/savings-tracker.svg",
+		title: "Savings Tracker",
+		subtitle: "Lorem ipsum dolor, Lorem ipsum dolorLorem ipsum dolor",
+	},
+	{
+		icon: "/images/thrift-savings-home.svg",
+		title: "Thrift Savings",
+		subtitle: "Lorem ipsum dolor, Lorem ipsum dolorLorem ipsum dolor",
+	},
+];

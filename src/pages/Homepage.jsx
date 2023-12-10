@@ -3,6 +3,9 @@ import Hero from "../sections/Hero";
 import MainHero from "../sections/MainHero";
 import ChooseBetter from "../sections/ChooseBetter";
 import Navbar from "../components/Navbar";
+import Products from "../sections/Products";
+import OurVision from "../sections/OurVision";
+import OurTarget from "../sections/OurTarget";
 
 const Homepage = () => {
 	return (
@@ -10,6 +13,9 @@ const Homepage = () => {
 			{/* <Navbar/> */}
 			<MainHero />
 			<ChooseBetter />
+			<Products/>
+			<OurVision/>
+			<OurTarget/>
 		</div>
 	);
 };

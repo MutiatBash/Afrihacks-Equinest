@@ -20,5 +20,18 @@ export const GrayEquinestCards = ({ icon, title, subtitle }) => {
 	);
 };
 
+export const ProductEquinestCards = ({ icon, title, subtitle }) => {
+	return (
+		<div className="flex flex-col gap-4 md:gap-8 text-center p-6 text-white justify-center items-center">
+			<img src={icon} className="w-[20%]" />
+			<div>
+				<h6 className="font-semibold text-xl">{title}</h6>
+				<p className="text-sm py-2">{subtitle}</p>
+			</div>
+		</div>
+	);
+};
+
+
 
 
