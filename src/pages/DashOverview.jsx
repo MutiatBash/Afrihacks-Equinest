@@ -1,7 +1,111 @@
 import React from "react";
+import DashCards from "../components/DashCards";
+import Header from "../components/Header";
 
+const cards = [
+  {
+    name: "Total Balance",
+    amount: "#10,700.00",
+    btn: true,
+    profit_loss: false,
+  },
+  {
+    name: "Total Income",
+    amount: "#5,000.00",
+    btn: false,
+    profit_loss: true,
+  },
+  {
+    name: "Total Expenses",
+    amount: "#2,700.00",
+    btn: false,
+    profit_loss: true,
+  },
+];
+
+const transactions = [
+  {
+    bankName: "Zenith",
+    transType: "stock",
+    date: "12/09/23",
+    time: "2:00pm",
+    amount: "#50.00",
+    status: "completed",
+  },
+  {
+    bankName: "Zenith",
+    transType: "stock",
+    date: "12/09/23",
+    time: "2:00pm",
+    amount: "#50.00",
+    status: "completed",
+  },
+  {
+    bankName: "Zenith",
+    transType: "stock",
+    date: "12/09/23",
+    time: "2:00pm",
+    amount: "#50.00",
+    status: "completed",
+  },
+  {
+    bankName: "Zenith",
+    transType: "stock",
+    date: "12/09/23",
+    time: "2:00pm",
+    amount: "#50.00",
+    status: "completed",
+  },
+];
 const DashOverview = () => {
-  return <div>DashOverview</div>;
+  const style = {
+    tableData: "flex-1",
+  };
+  return (
+    <>
+      <Header title="Welcome back, Cynthia!" backBtn="false" />
+      <div className="px-16 mb-16">
+        <div className="-mt-10 grid grid-cols-3 gap-8">
+          {cards.map((card, index) => (
+            <DashCards card={card} index={index} />
+          ))}
+        </div>
+        <div className="shadow-xl rounded-2xl p-8 mt-8">
+          <p className="text-2xl font-semibold">Transaction History</p>
+          <table className="w-full mt-4 text-center">
+            <thead className="text-darkGray pb-4 flex w-full">
+              <th className={style.tableData}>Name</th>
+              <th className={style.tableData}>Type</th>
+              <th className={style.tableData}>Date</th>
+              <th className={style.tableData}>Amount</th>
+              <th className={style.tableData}>Status</th>
+            </thead>
+            <tbody>
+              {transactions.map((tran, index) => (
+                <tr
+                  className="border-t-[1px] flex w-full border-darkGray border-opacity-10 py-4"
+                  key={index}
+                >
+                  <td className={style.tableData}>{tran.bankName}</td>
+                  <td className={style.tableData}>{tran.transType}</td>
+                  <td className="flex flex-col flex-1">
+                    <span>{tran.date}</span>
+                    <span className="text-sm">{tran.time}</span>
+                  </td>
+                  <td className={style.tableData}>{tran.amount}</td>
+                  <td className={style.tableData}>
+                    <span className="bg-green bg-opacity-10 rounded-xl py-1 px-4">
+                      {tran.status}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default DashOverview;

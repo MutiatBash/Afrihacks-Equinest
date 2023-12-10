@@ -1,6 +1,10 @@
 import { Outlet } from "react-router-dom";
 const Dashbaord = () => {
-  return <div>Dashbaord</div>;
+  return (
+    <div>
+      <Outlet />
+    </div>
+  );
 };
 
 export default Dashbaord;
