@@ -1,7 +1,8 @@
-export const PrimaryButton = ({ text, className, onClick }) => {
+export const PrimaryButton = ({ text, className, onClick, type }) => {
 	return (
 		<div>
 			<button
+			type={type}
 				onClick={onClick}
 				className={`gap-2 w-[fit-content] py-[0.8rem] px-2 whitespace-nowrap text-base text-darkGray bg-primaryYellow font-semibold md:py-[0.6875rem] md:px-5 hover:shadow-md transition-all ease-in cursor-pointer ${className}`}
 			>
