@@ -1,6 +1,7 @@
 import React from 'react'
 import { GrayEquinestCards, YellowEquinestCards } from '../components/EquinestCards'
-import {homeFeatures} from "../../src/data"
+import firstIcon from "../assets/images/secure-transaction.svg";
+import secondIcon from "../assets/images/investment-report.svg"
 
 const ChooseBetter = () => {
   return (
@@ -13,22 +14,22 @@ const ChooseBetter = () => {
 			</div>
 			<div className="grid md:grid-cols-4 gap-x-6 py-6 lg:pt-12 pb-[7rem]">
 				<GrayEquinestCards
-					icon={"/images/secure-transaction.svg"}
+					icon={firstIcon}
 					title="Secure Transaction"
 					subtitle="Save your money with us and stand a chance of gaining up to 12% interest rate"
 				/>
 				<YellowEquinestCards
-					icon={"/images/investment-report.svg"}
+					icon={secondIcon}
 					title="Investment Report"
 					subtitle="Invest your money into any of our investment plans and stand a chance to cash out big!!!"
 				/>
 				<GrayEquinestCards
-					icon={"/images/secure-transaction.svg"}
+					icon={firstIcon}
 					title="Customer Centric"
 					subtitle="We keep our customers happy and resolves issues quickly"
 				/>
 				<YellowEquinestCards
-					icon={"/images/investment-report.svg"}
+					icon={secondIcon}
 					title="Track Transaction"
 					subtitle="We keep our customers happy and resolves issues quickly"
 				/>

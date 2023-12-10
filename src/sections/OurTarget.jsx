@@ -1,5 +1,5 @@
 import React from "react";
-import targetImg from "/images/ourtarget.svg"
+import targetImg from "../assets/images/ourtarget.svg";
 
 const OurTarget = () => {
 	return (

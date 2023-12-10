@@ -40,7 +40,9 @@ export const CustomerEquinestCards = ({ image, name, comment }) => {
 					<img src={image} className="w-[20%]" />
 					<h6 className="font-medium">{name}</h6>
 				</div>
-        <div className="w-[25%]"><img src="/images/ratings.svg"/></div>
+				<div className="w-[25%]">
+					<img src="../src/assets/images/ratings.svg" />
+				</div>
 			</div>
 			<p className="text-xs">{comment}</p>
 		</div>

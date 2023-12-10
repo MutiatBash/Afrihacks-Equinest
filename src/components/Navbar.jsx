@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import Logo from "/images/navlogo.svg";
+import Logo from "../assets/images/navlogo.svg";
 import { Link, useLocation } from "react-router-dom";
 import { PrimaryButton, SecondaryButton } from "./Button";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -33,7 +33,6 @@ export const links = [
 ];
 
 const Navbar = () => {
-	// const { cartItems } = useContext(CartContext);
 	const location = useLocation();
 	const [menuOpen, setMenuOpen] = useState(false);
 

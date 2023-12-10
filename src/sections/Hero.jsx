@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import heroImg from "/images/hero-image.svg";
+import heroImg from "../assets/images/hero-image.svg";
 import { PrimaryButton } from "../components/Button";
 
 const Hero = () => {
@@ -23,7 +23,7 @@ const Hero = () => {
 				</div>
 
 				<div>
-					<Link to="">
+					<Link to="/signup">
 						<PrimaryButton text="Get Started" />
 					</Link>
 				</div>
