@@ -1,5 +1,5 @@
 import React from "react";
-import signUp from "/images/signupImg.svg";
+import signUp from "../assets/images/signupImg.svg";
 import Input from "../components/Inputs";
 
 const Signup = () => {
