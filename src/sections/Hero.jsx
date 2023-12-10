@@ -6,12 +6,11 @@ import heroImg from "/images/hero-image.svg"
 
 const Hero = () => {
   return (
-		<section className=" pt-3 lg:pt text-center bg-[#464545] pb-0">
-		
+		<section className=" pt-3 lg:pt text-center bg-lightGray pb-0">
 			<div className="flex flex-col gap-6 lg:gap-10 items-center justify-center pt-8 lg:pt-16 font-['Rubik'] lg:px-16 pb-0">
 				<h2 className="text-[#fff]  text-[1.7rem] lg:text-6xl w-full lg:w-[70%] lg:leading-[4.5rem]">
 					Endless Financial Opportunities with{" "}
-					<span className="text-[#FFC700]">EquiNest</span>
+					<span className="text-primaryYellow">EquiNest</span>
 				</h2>
 				<p className="text-[#fdfcfd] lg:w-[50%] lg:text-[1.2rem] pb-4 lg:leading-8">
 					Building Your Financial Fortress... Your digital access to Secure

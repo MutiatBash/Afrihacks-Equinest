@@ -6,7 +6,7 @@ import rightNet from "/images/hero-net-right.svg";
 
 const MainHero = () => {
   return (
-		<section className="bg-[#464545] relative">
+		<section className="bg-lightGray relative overflow-x-hidden">
 			<div className="absolute -left-16 z-30">
 				<img src={leftNet} />
 			</div>
