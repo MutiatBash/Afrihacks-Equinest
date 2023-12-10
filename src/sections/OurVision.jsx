@@ -1,5 +1,6 @@
 import React from "react";
-import visionImg from "/images/ourVision.svg";
+// import visionImg from "/images/ourVision.svg";
+import visionImg from "../assets/images/ourVision.svg";
 
 const OurVision = () => {
 	return (
@@ -18,7 +19,7 @@ const OurVision = () => {
 				</p>
 			</div>
 			<div>
-				<img src={visionImg} />
+				<img src={visionImg}/>
 			</div>
 		</section>
 	);

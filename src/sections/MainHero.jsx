@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Hero from "./Hero";
-import leftNet from "/images/hero-net-left.svg";
-import rightNet from "/images/hero-net-right.svg";
+import leftNet from "../assets/images/hero-net-left.svg";
+import rightNet from "../assets/images/hero-net-right.svg";
 
 const MainHero = () => {
 	return (
