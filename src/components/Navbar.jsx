@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import Logo from "/images/navlogo.svg";
 import { Link, useLocation } from "react-router-dom";
+import { PrimaryButton, SecondaryButton } from "./Button";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faBars } from "@fortawesome/free-solid-svg-icons";
 // import { faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -53,16 +54,20 @@ const Navbar = () => {
 								to={links.url}
 								className={`nav-item text-[#fff] transition duration-300 ease-in text-lg font-medium ${
 									location.pathname === links.url
-										? "text-[#FFC700]"
+										? "text-primaryYellow"
 										: ""
 								}`}
 							>
 								{links.text}
 							</Link>
-							<div className="absolute w-full left-0 h-0.5 bg-[#FFC700] transform scale-x-0 origin-left transition-transform duration-300 ease-in-out group-hover:scale-x-100"></div>
+							<div className="absolute w-full left-0 h-0.5 bg-primaryYellow transform scale-x-0 origin-left transition-transform duration-300 ease-in-out group-hover:scale-x-100"></div>
 						</li>
 					))}
 				</ul>
+				<div className="flex flex-row gap-6">
+					<PrimaryButton text="Get Started" />
+					<SecondaryButton text="Log in" />
+				</div>
 
 				<div className="flex lg:hidden flex-row gap-10 items-center justify-between">
 					{/* <button onClick={handleMenu} className="">
