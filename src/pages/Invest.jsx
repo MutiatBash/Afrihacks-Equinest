@@ -1,49 +1,79 @@
 import Header from "../components/Header";
 import CommunityCard from "../components/CommunityCard";
+import { useState } from "react";
 
-import stayathomemums from "../assets/stayathomemums.svg";
-import business from "../assets/business.svg";
-import working from "../assets/working.svg";
-import disable from "../assets/disable.svg";
-import unemployed from "../assets/unemployed.svg";
-import student from "../assets/student.svg";
+import palmoil from "../assets/palmoil.svg";
+import transport from "../assets/transport.svg";
+import chicken from "../assets/chicken.svg";
+import house from "../assets/house.svg";
+import farm from "../assets/farm.svg";
+import catfish from "../assets/catfish.svg";
 
 const communities = [
   {
-    img: stayathomemums,
-    title: "Stay At Home Mums",
-    subtitle: "Connect with other stay-at-home moms",
+    img: palmoil,
+    title: "Palm oil Investment",
+    subtitle: "N30,000 /Unint",
+    subtitle2: "25% ROI in 6 months",
+    group: "agriculture",
   },
   {
-    img: unemployed,
-    title: "Unemployed",
-    subtitle: "Connect with others hoping to get employment",
+    img: farm,
+    title: "Hydro-tech farms",
+    subtitle: "N30,000 /Unint",
+    subtitle2: "25% ROI in 6 months",
+    group: "agriculture",
   },
   {
-    img: business,
-    title: "Business Women",
-    subtitle: "learn about investment opportunities and build your wealth.",
+    img: transport,
+    title: "Coaster Bus investment",
+    subtitle: "N30,000 /Unint",
+    subtitle2: "25% ROI in 6 months",
+    group: "transportation",
   },
   {
-    img: student,
-    title: "Students",
-    subtitle:
-      "Secure a brighter financial future and navigate your student life with confidence.",
+    img: catfish,
+    title: "Catfish investment",
+    subtitle: "N30,000 /Unint",
+    subtitle2: "25% ROI in 6 months",
+    group: "livestock",
   },
   {
-    img: disable,
-    title: "Disabled Women",
-    subtitle:
-      "Believe in your abilities and take charge of your financial future.",
+    img: house,
+    title: "Real estate(bungalow}",
+    subtitle: "N30,000 /Unint",
+    subtitle2: "25% ROI in 6 months",
+    group: "real estate",
   },
   {
-    img: working,
-    title: "Working Class women",
-    subtitle: "learn about investment opportunities and build your wealth.",
+    img: chicken,
+    title: "Poultry investment",
+    subtitle: "N30,000 /Unint",
+    subtitle2: "25% ROI in 6 months",
+    group: "livestock",
   },
+];
+const investTabs = [
+  "All",
+  "Agriculture",
+  "Livestock",
+  "Transportation",
+  "Real Estate",
 ];
 
 const Invest = () => {
+  const [activeTab, setActiveTab] = useState("All");
+
+  const [category, setCategory] = useState(communities);
+
+  const handleCategory = (tab) => {
+    setActiveTab(tab);
+
+    if (tab === "All") {
+      setCategory(communities);
+    } else
+      setCategory(communities.filter((com) => com.group === tab.toLowerCase()));
+  };
   return (
     <>
       <Header />
@@ -52,8 +82,22 @@ const Invest = () => {
           There are several investment opportunities available for you at{" "}
           <span className="text-primaryYellow">EquiNest</span>
         </p>
+        <div className="flex justify-between mb-8">
+          {investTabs.map((tab, index) => (
+            <span
+              key={index}
+              className={`${
+                activeTab === tab &&
+                "text-primaryYellow underline font-semibold"
+              } cursor-pointer`}
+              onClick={() => handleCategory(tab)}
+            >
+              {tab}
+            </span>
+          ))}
+        </div>
         <div className="grid grid-cols-3 gap-x-16 gap-y-8 text-primaryBlack">
-          {communities.map((comm, index) => (
+          {category.map((comm, index) => (
             <CommunityCard comm={comm} key={index} />
           ))}
         </div>
