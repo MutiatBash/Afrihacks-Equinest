@@ -11,7 +11,7 @@ const ChooseBetter = () => {
 					<span className="text-primaryYellow">Equinest</span>
 				</h3>
 			</div>
-			<div className="grid md:grid-cols-4 gap-x-8 py-6 lg:pt-12 pb-[7rem]">
+			<div className="grid md:grid-cols-4 gap-x-6 py-6 lg:pt-12 pb-[7rem]">
 				<GrayEquinestCards
 					icon={"/images/secure-transaction.svg"}
 					title="Secure Transaction"

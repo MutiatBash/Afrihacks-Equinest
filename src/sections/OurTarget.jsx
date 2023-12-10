@@ -8,7 +8,7 @@ const OurTarget = () => {
 				<img src={targetImg} />
 			</div>
 			<div className="w-[40%] text-end">
-				<h3 className="text-[1.7rem] text-primaryYellow lg:text-[3.2rem] w-full lg:leading-[4.3rem] font-bold">
+				<h3 className="text-[1.7rem] text-primaryYellow lg:text-[3.2rem] w-full lg:leading-[4.3rem] font-semibold">
 					Our Target
 				</h3>
 				<p className="py-2 lg:text-xl">
