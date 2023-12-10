@@ -16,7 +16,7 @@ const Header = ({ title, backBtn }) => {
       <div className="flex items-center justify-center bg-primaryBlack py-3">
         <img src={logo} alt="logo" className="w-1/12" />
       </div>
-      <div className="bg-lightGray text-white h-60 px-16">
+      <div className="bg-lightGray text-white h-56 px-16">
         <nav className="flex justify-between items-center pt-8">
           <div className="flex gap-12">
             <img src={logo} alt="logo" />
@@ -45,7 +45,7 @@ const Header = ({ title, backBtn }) => {
             <img src={user} alt="user" />
           </div>
         </nav>
-        <div className="flex items-center mt-8">
+        <div className="flex items-center mt-6">
           {backBtn === "true" && <img src={back} alt="back icon" />}
           <p className="font-bold text-3xl ml-4">{title}</p>
         </div>
