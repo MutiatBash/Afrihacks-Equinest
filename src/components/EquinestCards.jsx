@@ -1,4 +1,5 @@
 import React from "react";
+import ratings from "../assets/images/ratings.svg"
 
 export const YellowEquinestCards = ({ icon, title, subtitle }) => {
 	return (
@@ -41,7 +42,7 @@ export const CustomerEquinestCards = ({ image, name, comment }) => {
 					<h6 className="font-medium">{name}</h6>
 				</div>
 				<div className="w-[25%]">
-					<img src="../src/assets/images/ratings.svg" />
+					<img src={ratings} />
 				</div>
 			</div>
 			<p className="text-xs">{comment}</p>
