@@ -45,7 +45,6 @@ const Agreement = () => {
 
 				<form className="flex flex-col gap-6">
 					<div className='flex flex-row gap-3 border border-darkGray rounded p-3 text-sm font-light'>
-						
 						<input type="checkbox" />
 						<span>I agree and wish to continue</span>
 					</div>
