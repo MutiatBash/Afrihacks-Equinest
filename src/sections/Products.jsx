@@ -1,26 +1,30 @@
 import React from "react";
 import { ProductEquinestCards } from "../components/EquinestCards";
 // import { homeProducts } from "../data";
+import savings from  "../assets/images/savings-icon-home.svg"
+import community from  "../assets/images/community-home.svg"
+import savingsTracker from "../assets/images/savings-tracker.svg"
+import thrift from "../assets/images/thrift-savings-home.svg"
 
 
 export const homeProducts = [
 	{
-		icon: "../src/assets/images/savings-icon-home.svg",
+		icon: savings,
 		title: "General Savings",
 		subtitle: "Lorem ipsum dolor, Lorem ipsum dolorLorem ipsum dolor",
 	},
 	{
-		icon: "../src/assets/images/community-home.svg",
+		icon: community,
 		title: "Community Mgt",
 		subtitle: "Lorem ipsum dolor, Lorem ipsum dolorLorem ipsum dolor",
 	},
 	{
-		icon: "../src/assets/images/savings-tracker.svg",
+		icon: savingsTracker,
 		title: "Savings Tracker",
 		subtitle: "Lorem ipsum dolor, Lorem ipsum dolorLorem ipsum dolor",
 	},
 	{
-		icon: "../src/assets/images/thrift-savings-home.svg",
+		icon: thrift,
 		title: "Thrift Savings",
 		subtitle: "Lorem ipsum dolor, Lorem ipsum dolorLorem ipsum dolor",
 	},
