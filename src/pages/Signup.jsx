@@ -1,76 +1,43 @@
-import React from "react";
+import React, { useContext } from "react";
 import signUp from "../assets/images/signupImg.svg";
-import {InputFormik }from "../components/Inputs";
+import { InputFormik } from "../components/Inputs";
 import { useFormik } from "formik";
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { useForm } from "react-hook-form";
 import authLogo from "../assets/images/authLogo.svg";
 import { PrimaryButton } from "../components/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { userContext } from "../userContext";
 
 const Signup = () => {
+	const navigate = useNavigate();
+	const { emailAddress, setEmailAddress, loading, setLoading } =
+		useContext(userContext);
 
-	function validateEmail(value) {
-		let error;
-		if (!value) {
-			error = "Required";
-		} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-			error = "Invalid email address";
+	const {
+		handleSubmit,
+		register,
+		watch,
+		formState: { errors },
+	} = useForm();
+	// const onSubmit = (values) => alert(values.email + " " + values.password);
+	const onSubmit = async (data, e) => {
+		e.preventDefault();
+		console.log(data);
+		try {
+			setLoading(true);
+			await new Promise((resolve) => setTimeout(resolve, 2000));
+			const userEmail = data?.emailAddress;
+			console.log(userEmail);
+			setEmailAddress(userEmail);
+			navigate("/verify-email");
+		} catch (error) {
+			console.error("Registration failed", error);
+		} finally {
+			setLoading(false);
 		}
-		return error;
-	}
-	const validate = (values) => {
-		const errors = {};
-
-		if (!values.fullName) {
-			errors.fullName = "Required";
-		} else if (values.fullName.length > 15) {
-			errors.fullName = "Must be 15 characters or less";
-		}
-		// if (!values.emailAddress) {
-		// 	errors.emailAddress = "Required";
-		// } else if (
-		// 	!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.emailAddress)
-		// ) {
-		// 	errors.emailAddress = "Invalid email address";
-		// }
-		if (!values.bvn) {
-			errors.bvn = "Required";
-		} else if (values.bvn.length > 20) {
-			errors.bvn = "Must be 20 characters or less";
-		}
-		if (!values.phoneNumber) {
-			errors.phoneNumber = "Required";
-		}
-		if (!values.password) {
-			errors.password = "Required";
-		} else if (
-			!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
-				values.password
-			)
-		) {
-			errors.password =
-				"Password must have at least 8 characters, including one uppercase letter, one lowercase letter, one number, and one special character";
-		}
-
-		return errors;
 	};
-	const formik = useFormik({
-		initialValues: {
-			fullName: "",
-			emailAddress: "",
-			phoneNumber: "",
-			bvn: "",
-			password: "",
-			confirmPassword: "",
-		},
-		validate,
-		onSubmit: (values, { setSubmitting }) => {
-			setTimeout(() => {
-				alert(JSON.stringify(values, null, 2));
-				setSubmitting(false);
-			}, 400);
-		},
-	});
+
 	return (
 		<section className="flex flex-col justify-between p-5 lg:px-16 lg:py-8">
 			<div className="top-0">
@@ -78,101 +45,170 @@ const Signup = () => {
 			</div>
 			<div className="flex flex-row justify-between pt-8">
 				<div className="flex flex-row justify-center items-center w-[40%]">
-					<Formik>
-						{({ isSubmitting }) => (
-							<Form
-								action=""
-								onSubmit={formik.handleSubmit}
-								className=" w-full py-8 lg:py-14 flex flex-col gap-4 lg:gap-10 justify-between"
-							>
-								<div className="flex flex-col gap-2">
-									<h3 className="text-3xl">
-										Create an EquiNest Account
-									</h3>
-									<p className="">
-										Ensure you register so we can serve you better
-									</p>
-								</div>
-								<div className="flex flex-col gap-6">
-									<InputFormik
-										label="Full Name"
-										name="fullName"
-										type="text"
-										onChange={formik.handleChange}
-										value={formik.values.fullName}
-										error={
-											formik.errors.fullName
-												? formik.errors.fullName
-												: ""
-										}
-									/>
-									<InputFormik
-										label="Email Address"
-										name="emailAddress"
-										type="email"
-										onChange={formik.handleChange}
-										value={formik.values.emailAddress}
-										validate={validateEmail}
-										error={
-											formik.errors.emailAddress
-												? formik.errors.emailAddress
-												: ""
-										}
-									/>
-									<InputFormik
-										label="Phone Number"
-										name="phoneNumber"
-										type="tel"
-										onChange={formik.handleChange}
-										value={formik.values.phoneNumber}
-										error={
-											formik.errors.phoneNumber
-												? formik.errors.phoneNumber
-												: ""
-										}
-									/>
-									<InputFormik
-										label="BVN"
-										name="bvn"
-										type="number"
-										onChange={formik.handleChange}
-										value={formik.values.bvn}
-										error={formik.errors.bvn ? formik.errors.bvn : ""}
-									/>
-									<InputFormik
-										label="Password"
-										name="password"
-										type="password"
-										onChange={formik.handleChange}
-										value={formik.values.password}
-										error={
-											formik.errors.password
-												? formik.errors.password
-												: ""
-										}
-									/>
-									<InputFormik
-										label="Confirm Password"
-										name="confirmPassword"
-										type="password"
-										onChange={formik.handleChange}
-										value={formik.values.confirmPassword}
-									/>
-								</div>
+					<form
+						action=""
+						onSubmit={handleSubmit(onSubmit)}
+						className=" w-full py-8 lg:py-14 flex flex-col gap-4 lg:gap-10 justify-between"
+					>
+						<div className="flex flex-col gap-2">
+							<h3 className="text-3xl">Create an EquiNest Account</h3>
+							<p className="">
+								Ensure you register so we can serve you better
+							</p>
+						</div>
+						<div className="flex flex-col gap-6">
+							<div className="flex flex-col w-full gap-2">
+								<label htmlFor="fullName" className="font-medium">
+									Full Name
+								</label>
+								<input
+									id="fullName"
+									type="text"
+									className="py-2 px-3 lg:py-3 border border-darkGray rounded placeholder:text-[#c5c3c3a8]"
+									name="fullName"
+									placeholder="Jane Doe"
+									{...register("fullName", {
+										required: "Full name is required",
+										// pattern: {
+										// 	value: /^[A-Za-z]+$/i,
+										// 	message: "Numbers and characters not allowed",
+										// },
+									})}
+								/>
+								<span className="text-red text-sm ">
+									{errors.fullName && errors.fullName.message}
+								</span>
+							</div>
+							<div className="flex flex-col w-full gap-2">
+								<label htmlFor="emailAddress" className="font-medium">
+									Email Address
+								</label>
+								<input
+									id="emailAddress"
+									type="email"
+									className="signup-input-form py-2 px-3 lg:py-3 border border-darkGray rounded placeholder:text-[#c5c3c3a8]"
+									name="emailAddress"
+									placeholder="Enter your email address"
+									{...register("emailAddress", {
+										required: "Email is required",
+										pattern: {
+											value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+											message: "Invalid email address",
+										},
+									})}
+								/>
+								<span className="text-red text-sm ">
+									{errors.emailAddress && errors.emailAddress.message}
+								</span>
+							</div>
 
-								<div className="flex flex-col gap-3 text-center">
-									<PrimaryButton
-										className="w-full shadow"
-										text="Proceed"
-									/>
-									<p>
-										Already have an account?{" "}
-										<Link to="/login" className="text-primaryYellow">
-											Login
-										</Link>
-									</p>
-								</div>
-								{/* <div className="w-full py-6 lg:px-24 self-center mx-auto">
+							<div className="flex flex-col w-full gap-2">
+								<label htmlFor="phoneNumber" className="font-medium">
+									Phone Number
+								</label>
+								<input
+									id="phoneNumber"
+									type="number"
+									className=" py-2 px-3 lg:py-3 border border-darkGray rounded placeholder:text-[#c5c3c3a8]"
+									name="phoneNumber"
+									placeholder="08078954124"
+									{...register("phoneNumber", {
+										required: "Phone number is required",
+										// pattern: {
+										// 	value: /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/,
+										// 	message:
+										// 		"Password must have at least 8 characters, including 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character",
+										// },
+									})}
+								/>
+								<span className="text-red text-sm ">
+									{errors.phoneNumber && errors.phoneNumber.message}
+								</span>
+							</div>
+
+							<div className="flex flex-col w-full gap-2">
+								<label htmlFor="bvn" className="font-medium">
+									BVN
+								</label>
+								<input
+									id="bvn"
+									type="number"
+									className=" py-2 px-3 lg:py-3 border border-darkGray rounded placeholder:text-[#c5c3c3a8]"
+									name="bvn"
+									placeholder="222245566667788"
+									{...register("bvn", {
+										required: "BVN is required",
+									})}
+								/>
+								<span className="text-red text-sm ">
+									{errors.bvn && errors.bvn.message}
+								</span>
+							</div>
+
+							<div className="flex flex-col w-full gap-2">
+								<label htmlFor="password" className="font-medium">
+									Password
+								</label>
+								<input
+									id="password"
+									type="password"
+									className=" py-2 px-3 lg:py-3 border border-darkGray rounded placeholder:text-[#c5c3c3a8]"
+									name="password"
+									placeholder="********"
+									{...register("password", {
+										required: "Password is required",
+										pattern: {
+											value: /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/,
+											message:
+												"Password must have at least 8 characters, including 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character",
+										},
+									})}
+								/>
+								<span className="text-red text-sm ">
+									{errors.password && errors.password.message}
+								</span>
+							</div>
+							<div className="flex flex-col w-full gap-2">
+								<label
+									htmlFor="confirmPassword"
+									className="font-medium"
+								>
+									Confirm Password
+								</label>
+								<input
+									id="confirmPassword"
+									type="password"
+									className=" py-2 px-3 lg:py-3 border border-darkGray rounded placeholder:text-[#c5c3c3a8]"
+									name="confirmPassword"
+									placeholder="********"
+									{...register("confirmPassword", {
+										required: "Confirm your password",
+										validate: (value) =>
+											value === watch("password") ||
+											"Passwords do not match",
+									})}
+								/>
+								<span className="text-red text-sm ">
+									{errors.confirmPassword &&
+										errors.confirmPassword.message}
+								</span>
+							</div>
+						</div>
+
+						<div className="flex flex-col gap-3 text-center">
+							<PrimaryButton
+								className={`w-full shadow`}
+								disabled={loading}
+								text={loading ? "Submitting..." : "Proceed"}
+							/>
+							<p>
+								Already have an account?{" "}
+								<Link to="/login" className="text-primaryYellow">
+									Login
+								</Link>
+							</p>
+						</div>
+						{/* <div className="w-full py-6 lg:px-24 self-center mx-auto">
 							<button
 								// disabled={email === ""}
 								type="submit"
@@ -194,9 +230,7 @@ const Signup = () => {
 							)} 
 							</button>
 						</div> */}
-							</Form>
-						)}
-					</Formik>
+					</form>
 
 					{/* <div className="fixed inset-y-0"> */}
 					{/* {user?.issuer && (

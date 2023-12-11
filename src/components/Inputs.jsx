@@ -26,7 +26,7 @@ export const InputFormik = ({
 				onChange={onChange}
 				validate={validate}
 			/>
-			<span className="text-red text-sm w-[10%]">{error}</span>
+			<span className="text-red text-sm">{error}</span>
 		</div>
 	);
 };
@@ -60,38 +60,48 @@ export const InputFormik = ({
 // 	);
 // };
 
-export const InputReact = ({
-	name,
-	label,
-	placeholder,
-	type,
-	value,
-	onChange,
-	error,
-	required,
-	register,
-	validationRules = {},
-}) => {
-	return (
-		<div className="flex flex-col w-full gap-2 whi">
-			<label htmlFor={name} className="font-medium">
-				{label}
-			</label>
-			<input
-				id={name}
-				type={type}
-				className="signup-input-form py-2 px-3 lg:py-3 border border-darkGray rounded placeholder:text-[#c5c3c3a8]"
-				name={name}
-				placeholder={placeholder}
-				value={value}
-				onChange={onChange}
-				// {...register(name, validationRules)}
-			/>
-			<span className="text-red text-sm ">{error}</span>
-		</div>
-	);
-};
+// export const InputReact = (
+// 	{
+// 		name,
+// 		label,
+// 		placeholder,
+// 		type,
+// 		value,
+// 		onChange,
+// 		error,
+// 		required,
+// 		register,
+// 		validationRules = {},
+// 	}) => (
+// 		<div className="flex flex-col w-full gap-2">
+// 			<label htmlFor={name} className="font-medium">
+// 				{label}
+// 			</label>
+// 			<input
+// 				id={name}
+// 				type={type}
+// 				className="signup-input-form py-2 px-3 lg:py-3 border border-darkGray rounded placeholder:text-[#c5c3c3a8]"
+// 				name={name}
+// 				placeholder={placeholder}
+// 				// {...register(name, {validationRules} )}
+// 			/>
+// 			<span className="text-red text-sm ">{error}</span>
+// 		</div>
+// 	)
 
+// export const Inputs = ({
+// 	label,
+// 	register,
+// 	required,
+// 	error,
+// 	validationRules = {},
+// }) => (
+// 	<>
+// 		<label>{label}</label>
+// 		<input {...register(label, { validationRules })} className="border" />
+// 		<p>{error}</p>
+// 	</>
+// );
 export const Input = ({
 	name,
 	label,
@@ -101,7 +111,7 @@ export const Input = ({
 	onChange,
 	error,
 	validate,
-	className
+	className,
 }) => {
 	return (
 		<div className={`flex flex-col w-full gap-2 ${className}`}>
