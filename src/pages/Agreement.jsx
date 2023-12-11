@@ -1,12 +1,18 @@
-import React from 'react'
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import { PrimaryButton } from "../components/Button";
 import authLogo from "../assets/images/authLogo.svg";
-import { Input } from '../components/Inputs';
+import { Input } from "../components/Inputs";
 import verify from "../assets/images/alertVerify.svg";
+import SuccessModal from "../components/SuccessModal";
 
 const Agreement = () => {
-  return (
+	const [successful, setSuccessful] = useState(false);
+	const handleSignUpSuccess = () => {
+		setSuccessful(!successful);
+	};
+
+	return (
 		<section className="flex flex-col p-5 justify-center items-center gap-12 lg:p-16 my-auto">
 			<div className="top-0 self-start">
 				<img src={authLogo} />
@@ -44,7 +50,7 @@ const Agreement = () => {
 				</div>
 
 				<form className="flex flex-col gap-6">
-					<div className='flex flex-row gap-3 border border-darkGray rounded p-3 text-sm font-light'>
+					<div className="flex flex-row gap-3 border border-darkGray rounded p-3 text-sm font-light">
 						<input type="checkbox" />
 						<span>I agree and wish to continue</span>
 					</div>
@@ -53,13 +59,15 @@ const Agreement = () => {
 						<PrimaryButton
 							className="w-full shadow"
 							text="Register"
-							type="submit"
+							type="button"
+							onClick={handleSignUpSuccess}
 						/>
 					</div>
 				</form>
+				{successful && <SuccessModal successText="created an account" buttonText="Continue" link="/dashboard/"/>}
 			</div>
 		</section>
-  );
-}
+	);
+};
 
-export default Agreement
+export default Agreement;
