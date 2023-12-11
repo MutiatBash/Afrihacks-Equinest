@@ -1,7 +1,30 @@
 import React from "react";
 import { ProductEquinestCards } from "../components/EquinestCards";
-import { homeProducts } from "../data";
+// import { homeProducts } from "../data";
 
+
+export const homeProducts = [
+	{
+		icon: "../src/assets/images/savings-icon-home.svg",
+		title: "General Savings",
+		subtitle: "Lorem ipsum dolor, Lorem ipsum dolorLorem ipsum dolor",
+	},
+	{
+		icon: "../src/assets/images/community-home.svg",
+		title: "Community Mgt",
+		subtitle: "Lorem ipsum dolor, Lorem ipsum dolorLorem ipsum dolor",
+	},
+	{
+		icon: "../src/assets/images/savings-tracker.svg",
+		title: "Savings Tracker",
+		subtitle: "Lorem ipsum dolor, Lorem ipsum dolorLorem ipsum dolor",
+	},
+	{
+		icon: "../src/assets/images/thrift-savings-home.svg",
+		title: "Thrift Savings",
+		subtitle: "Lorem ipsum dolor, Lorem ipsum dolorLorem ipsum dolor",
+	},
+];
 const Products = () => {
 	return (
 		<section className="p-5 lg:px-16 lg:py-16 flex flex-col gap-12 justify-center items-center text-white text-center bg-lightGray">
