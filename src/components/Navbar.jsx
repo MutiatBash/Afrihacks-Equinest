@@ -64,8 +64,12 @@ const Navbar = () => {
 					))}
 				</ul>
 				<div className="flex flex-row gap-6">
-					<PrimaryButton text="Get Started" />
-					<SecondaryButton text="Log in" />
+					<Link to="/signup">
+						<PrimaryButton text="Get Started" />
+					</Link>
+					<Link to="/login">
+						<SecondaryButton text="Log in" />
+					</Link>
 				</div>
 
 				<div className="flex lg:hidden flex-row gap-10 items-center justify-between">

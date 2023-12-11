@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Input } from "../components/Inputs";
 import { Link } from "react-router-dom";
 import { PrimaryButton } from "../components/Button";
 import authLogo from "../assets/images/authLogo.svg";
+import { userContext } from "../userContext";
 
 const VerifyEmail = () => {
+    const {emailAddress} = useContext(userContext)
 	return (
 		<section className="flex flex-col p-5 justify-center gap-12 items-center lg:p-16 my-auto">
 			<div className="top-0 self-start">
@@ -18,7 +20,7 @@ const VerifyEmail = () => {
 					</p>
 				</div>
 				<p className="text-primaryYellow text-center text-lg">
-					davidjones@example.com
+                    {emailAddress}
 				</p>
 				<form className="flex flex-col gap-6">
 					<Input label="Verification Code" />
