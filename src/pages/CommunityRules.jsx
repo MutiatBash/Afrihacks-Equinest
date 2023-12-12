@@ -1,10 +1,13 @@
 import Header from "../components/Header";
 import { PrimaryButton } from "../components/Button";
+import { Link, useSearchParams } from "react-router-dom";
 
 const CommunityRules = () => {
+  const [searchParams] = useSearchParams();
+  const name = searchParams.get("name");
   return (
     <>
-      <Header title="Stay-at-home mums community" />
+      <Header title={`${name} Community`} />
       <div className="px-16 my-8 flex flex-col w-fit mx-auto text-lg">
         <div>
           <p className="font-bold text-2xl mt-8 mb-2">
@@ -142,7 +145,9 @@ const CommunityRules = () => {
               </span>
             </span>
           </div>
-          <PrimaryButton text="Join Community" />
+          <Link to="/dashboard/joined-communities">
+            <PrimaryButton text="Join Community" />
+          </Link>
         </div>
       </div>
     </>

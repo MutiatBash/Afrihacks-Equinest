@@ -77,12 +77,12 @@ const Invest = () => {
   return (
     <>
       <Header />
-      <div className="px-16 my-12 ">
+      <div className="px-6 md:px-8 xl:px-16 my-6 md:my-8 xl:my-12 ">
         <p className="text-center font-semibold text-2xl mb-8">
           There are several investment opportunities available for you at{" "}
           <span className="text-primaryYellow">EquiNest</span>
         </p>
-        <div className="flex justify-between mb-8">
+        <div className="flex flex-wrap justify-between mb-8">
           {investTabs.map((tab, index) => (
             <span
               key={index}
@@ -96,7 +96,7 @@ const Invest = () => {
             </span>
           ))}
         </div>
-        <div className="grid grid-cols-3 gap-x-16 gap-y-8 text-primaryBlack">
+        <div className=" grid-cols-1 md:grid-cols-2 grid xl:grid-cols-3 gap-x-16 gap-y-8 text-primaryBlack">
           {category.map((comm, index) => (
             <CommunityCard comm={comm} key={index} />
           ))}
