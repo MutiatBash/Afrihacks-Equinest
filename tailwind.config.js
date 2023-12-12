@@ -12,6 +12,8 @@ export default {
       white: "#ffffff",
       green: "#039D00",
       red: "#FF1709",
+      lighterGray: "#EDEDED",
+      borderJoinedComm: "#CACACA",
     },
   },
   plugins: [],

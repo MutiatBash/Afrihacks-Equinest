@@ -8,7 +8,7 @@ import disable from "../assets/disable.svg";
 import unemployed from "../assets/unemployed.svg";
 import student from "../assets/student.svg";
 
-const communities = [
+export const communities = [
   {
     img: stayathomemums,
     title: "Stay At Home Mums",
@@ -46,7 +46,7 @@ const Community = () => {
   return (
     <>
       <Header title="Join a community today!" />
-      <div className="px-16 my-12 grid grid-cols-3 gap-x-16 gap-y-8 text-primaryBlack">
+      <div className="px-6 md:px-8 xl:px-16 w-fit mx-auto my-12 grid-cols-1 md:grid-cols-2 grid xl:grid-cols-3 gap-x-16 gap-y-8 text-primaryBlack">
         {communities.map((comm, index) => (
           <CommunityCard comm={comm} key={index} />
         ))}
