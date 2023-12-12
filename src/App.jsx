@@ -10,7 +10,6 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import VerifyEmail from "./pages/VerifyEmail";
 import Agreement from "./pages/Agreement";
-import NewThriftForm from "./components/NewThriftForm";
 
 const App = () => {
 	return (
@@ -19,7 +18,6 @@ const App = () => {
 				<Route path="/" element={<Homepage />} />
 				<Route path="/signup" element={<Signup />} />
 				<Route path="/login" element={<Login />} />
-				<Route path="/newthrift" element={<NewThriftForm />} />
 				<Route path="/agreement" element={<Agreement />} />
 				<Route path="/verify-email" element={<VerifyEmail />} />
 				<Route path="dashboard/" element={<Dashbaord />}>
