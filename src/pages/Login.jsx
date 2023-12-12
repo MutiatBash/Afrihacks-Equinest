@@ -1,19 +1,37 @@
-import React from "react";
+import React,{useContext} from "react";
 import { useForm } from "react-hook-form";
 // import {  Inputs } from "../components/Inputs";
 import loginImg from "../assets/images/loginImage.svg";
 import { PrimaryButton } from "../components/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import authLogo from "../assets/images/authLogo.svg";
+import { userContext } from "../userContext";
 
 const Login = () => {
+const {loading, setLoading} = useContext(userContext)
+    const navigate= useNavigate()
 	const {
 		handleSubmit,
 		register,
 		formState: { errors },
 	} = useForm();
 	// const onSubmit = (values) => alert(values.email + " " + values.password);
-	const onSubmit = (data) => console.log(data);
+	const onSubmit = async (data, e) => {
+		e.preventDefault();
+		console.log(data);
+		try {
+			setLoading(true);
+			await new Promise((resolve) => setTimeout(resolve, 2000));
+			// const userEmail = data?.emailAddress;
+			// console.log(userEmail);
+			// setEmailAddress(userEmail);
+			navigate("/dashboard");
+		} catch (error) {
+			console.error("Failed to login", error);
+		} finally {
+			setLoading(false);
+		}
+	};
 
 	return (
 		<section className="flex flex-col justify-between pt-8 p-5 lg:px-16 gap-10 lg:py-8 bg-white">
@@ -82,7 +100,7 @@ const Login = () => {
 						<div className="flex flex-col gap-3 text-center pt-6">
 							<PrimaryButton
 								className="w-full shadow"
-								text="Login"
+								text={loading ? "Logging in...." : "Login"}
 								type="submit"
 							/>
 							<p>
