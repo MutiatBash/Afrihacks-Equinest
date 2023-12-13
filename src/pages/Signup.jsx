@@ -65,7 +65,7 @@ const Signup = () => {
 				// console.log(response.data);
 
 				// const userEmail = data?.email;
-				const user=data?.full_name
+				const user = data?.full_name
 				console.log(user)
 				setFullName(user)
 				// console.log(userEmail);
@@ -181,6 +181,10 @@ const Signup = () => {
 									placeholder="222245566667788"
 									{...register("bvn", {
 										required: "BVN is required",
+										maxLength:11,
+										message:
+												"BVN must not be more than 11 numbers ",
+									
 									})}
 								/>
 								<span className="text-red text-sm ">

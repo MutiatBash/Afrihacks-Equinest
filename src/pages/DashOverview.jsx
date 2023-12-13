@@ -11,13 +11,13 @@ const cards = [
     profit_loss: false,
   },
   {
-    name: "Total Income",
+    name: "Investment Savings",
     amount: "#5,000.00",
     btn: false,
     profit_loss: true,
   },
   {
-    name: "Total Expenses",
+    name: "Thrift Savings",
     amount: "#2,700.00",
     btn: false,
     profit_loss: true,

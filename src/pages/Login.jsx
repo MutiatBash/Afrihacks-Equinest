@@ -38,8 +38,7 @@ const Login = () => {
 			if (response.data && response.data.key) {
 				const jwtToken = response.data.key;
                 console.log(jwtToken);
-
-				
+                
 				document.cookie = `jwtToken=${jwtToken}; path=/; secure; HttpOnly; SameSite=Strict;`;
 
 				console.log(response);
