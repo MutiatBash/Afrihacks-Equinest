@@ -12,7 +12,7 @@ import axios from "axios"
 
 const Signup = () => {
 	const navigate = useNavigate();
-	const { emailAddress, setEmailAddress, loading, setLoading } =
+	const { emailAddress, setEmailAddress,fullName, setFullName, loading, setLoading } =
 		useContext(userContext);
 
 	const {
@@ -39,8 +39,8 @@ const Signup = () => {
 	// 	}
 	// };
 
-	const onSubmit = async (data, e) => {
-		e.preventDefault(); 
+	const onSubmit = async (data) => {
+		// e.preventDefault(); 
 
 		try {
 			setLoading(true);
@@ -58,17 +58,20 @@ const Signup = () => {
 			);
 
 			
-			if (response.ok) {
+			if (response) {
 				console.log("Registration successful");
+				navigate("/login");
+				
+				// console.log(response.data);
+
+				// const userEmail = data?.email;
+				const user=data?.full_name
+				console.log(user)
+				setFullName(user)
+				// console.log(userEmail);
+				// setEmailAddress(userEmail);
 
 				
-				console.log(response.data);
-
-				const userEmail = data?.email;
-				console.log(userEmail);
-				setEmailAddress(userEmail);
-
-				navigate("/verify-email");
 			} else {
 				console.error("Registration failed. Status:", response.status);
 			}
