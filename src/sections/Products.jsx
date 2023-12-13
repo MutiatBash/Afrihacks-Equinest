@@ -31,8 +31,8 @@ export const homeProducts = [
 ];
 const Products = () => {
 	return (
-		<section className="p-5 lg:px-16 lg:py-16 flex flex-col gap-12 justify-center items-center text-white text-center bg-lightGray">
-			<div className="w-[40%]">
+		<section className="p-5 py-12 lg:px-16 lg:py-16 flex flex-col gap-6 lg:gap-12 justify-center items-center text-white text-center bg-lightGray">
+			<div className="lg:w-[40%]">
 				<h3 className="text-[1.7rem] lg:text-[3.2rem] w-full lg:leading-[4.3rem] font-semibold">
 					Our Products
 				</h3>
