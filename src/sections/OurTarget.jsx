@@ -3,11 +3,11 @@ import targetImg from "../assets/images/ourtarget.svg";
 
 const OurTarget = () => {
 	return (
-		<section className="flex flex-row p-5 bg-darkGray text-white lg:px-16 lg:py-14 gap-6 justify-between items-center text-left">
-			<div className="w-[40%]">
+		<section className="flex flex-col lg:flex-row p-5 bg-darkGray py-12 text-white lg:px-16 lg:py-14 gap-6 justify-between items-center text-left">
+			<div className="lg:w-[40%]">
 				<img src={targetImg} />
 			</div>
-			<div className="w-[40%] text-end">
+			<div className="lg:w-[40%] text-end">
 				<h3 className="text-[1.7rem] text-primaryYellow lg:text-[3.2rem] w-full lg:leading-[4.3rem] font-semibold">
 					Our Target
 				</h3>

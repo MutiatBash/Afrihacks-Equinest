@@ -59,11 +59,11 @@ const Login = () => {
 			<div className="top-0">
 				<img src={authLogo} />
 			</div>
-			<div className="flex flex-row justify-between gap-10">
-				<div className="w-[35%] flex flex-col gap-10 justify-center">
+			<div className="lg:flex lg:flex-row lg:justify-between lg:gap-10">
+				<div className="lg:w-[35%] flex flex-col gap-10 justify-center">
 					<div className="flex flex-col gap-2 text-center">
-						<h3 className="text-3xl">Welcome Back</h3>
-						<p className="">Login to your Equinest account</p>
+						<h3 className="text-2xl font-semibold lg:text-3xl">Welcome Back</h3>
+						<p className="text-sm lg:text-base">Login to your Equinest account</p>
 					</div>
 					<form
 						onSubmit={handleSubmit(onSubmit)}
@@ -137,7 +137,7 @@ const Login = () => {
 					</form>
 				</div>
 
-				<div className="right-0 inset-y-0 p-14 w-[55%] bg-white">
+				<div className="hidden md:block fixed right-0 inset-y-0 p-14 lg:w-[55%] bg-white">
 					<img src={loginImg} className="h-full" />
 				</div>
 			</div>

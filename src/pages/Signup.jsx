@@ -90,16 +90,16 @@ const Signup = () => {
 			<div className="top-0">
 				<img src={authLogo} />
 			</div>
-			<div className="flex flex-row justify-between pt-8">
-				<div className="flex flex-row justify-center items-center w-[40%]">
+			<div className="flex flex-row justify-between pt-4 lg:pt-8">
+				<div className="flex flex-row justify-center items-center lg:w-[40%]">
 					<form
 						action=""
 						onSubmit={handleSubmit(onSubmit)}
 						className=" w-full py-8 lg:py-14 flex flex-col gap-4 lg:gap-10 justify-between"
 					>
 						<div className="flex flex-col gap-2">
-							<h3 className="text-3xl">Create an EquiNest Account</h3>
-							<p className="">
+							<h3 className="text-xl lg:text-3xl font-semibold">Create an EquiNest Account</h3>
+							<p className="text-sm lg:text-base">
 								Ensure you register so we can serve you better
 							</p>
 						</div>
@@ -291,7 +291,7 @@ const Signup = () => {
 				)} */}
 					{/* </div> */}
 				</div>
-				<div className="fixed right-0 inset-y-0 p-14 w-[50%] bg-white ">
+				<div className="hidden md:block fixed right-0 inset-y-0 p-14 w-[50%] bg-white ">
 					<img src={signUp} className="w-[ h-full" />
 				</div>
 			</div>
