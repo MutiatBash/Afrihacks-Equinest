@@ -30,13 +30,19 @@ const Login = () => {
 					headers: {
 						Accept: "application/json",
 						"Content-Type": "application/json",
-						Authorization: `Bearer CwZiICMG52GbuqZSYLTOaHBIUlBEl5lrAgqVGCdboYM3RQStd7dNVx0OOuIMtDA3`,
+						// Authorization: `Bearer CwZiICMG52GbuqZSYLTOaHBIUlBEl5lrAgqVGCdboYM3RQStd7dNVx0OOuIMtDA3`,
 					},
 				}
 			);
 
-			if (response) {
-				console.log("Login successful");
+			if (response.data && response.data.key) {
+				const jwtToken = response.data.key;
+                console.log(jwtToken);
+
+				
+				document.cookie = `jwtToken=${jwtToken}; path=/; secure; HttpOnly; SameSite=Strict;`;
+
+				console.log(response);
 				navigate("/dashboard");
 			} else {
 				console.error("Login failed. Status:", response.status);
@@ -87,26 +93,26 @@ const Login = () => {
 						</div>
 
 						<div className="flex flex-col w-full gap-2">
-							<label htmlFor="password1" className="font-medium">
+							<label htmlFor="password" className="font-medium">
 								Password
 							</label>
 							<input
-								id="password1"
+								id="password"
 								type="password"
 								className=" py-2 px-3 lg:py-3 border border-darkGray rounded placeholder:text-[#c5c3c3a8]"
-								name="password1"
+								name="password"
 								placeholder="********"
-								{...register("password1", {
+								{...register("password", {
 									required: "Password is required",
-									// pattern: {
-									// 	value: /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/,
-									// 	message:
-									// 		"Password must have at least 8 characters, including 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character",
-									// },
+									pattern: {
+										value: /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/,
+										message:
+											"Password must have at least 8 characters, including 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character",
+									},
 								})}
 							/>
 							<span className="text-red text-sm ">
-								{errors.password1 && errors.password1.message}
+								{errors.password && errors.password.message}
 							</span>
 						</div>
 						<Link>
