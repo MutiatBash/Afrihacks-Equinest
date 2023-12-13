@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
+import { useContext } from "react";
+import { userContext } from "../userContext";
 
 const Save = () => {
+  const { emailAddress, fullName } = useContext(userContext);
   const save = [
     {
       title: "Safe Lock",
@@ -32,22 +35,24 @@ const Save = () => {
     box: "flex justify-center items-center px-4 md:px-8 flex-col h-[450px] bg-white shadow-lg border-[1px] border-primaryBlack rounded-2xl text-primaryBlack hover:bg-darkGray hover:text-white",
   };
   return (
-    <>
-      <Header title="Welcome back, Cynthia!" />
-      <div className="px-8 md:px-16 my-12  grid-cols-1 md:grid-cols-2 grid xl:grid-cols-3 gap-x-16 gap-y-8 text-primaryBlack -mt-6 xl:-mt-10">
-        {save.map((data, index) => (
-          <Link to={data.link}>
-            <div
-              className={data.active === "true" ? style.activeBox : style.box}
-              key={index}
-            >
-              <p className="font-bold">{data.title}</p>
-              <span className="text-center">{data.subtitle}</span>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </>
+		<>
+			<Header title={`Welcome back, ${fullName}!`} />
+			<div className="px-8 md:px-16 my-12  grid-cols-1 md:grid-cols-2 grid xl:grid-cols-3 gap-x-16 gap-y-8 text-primaryBlack -mt-6 xl:-mt-10">
+				{save.map((data, index) => (
+					<Link to={data.link}>
+						<div
+							className={
+								data.active === "true" ? style.activeBox : style.box
+							}
+							key={index}
+						>
+							<p className="font-bold">{data.title}</p>
+							<span className="text-center">{data.subtitle}</span>
+						</div>
+					</Link>
+				))}
+			</div>
+		</>
   );
 };
 
