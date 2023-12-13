@@ -2,12 +2,13 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import authLogo from "../assets/images/authLogo.svg";
 import { PrimaryButton } from "../components/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate , useLocation} from "react-router-dom";
 import { userContext } from "../userContext";
 
-const NewThriftForm = () => {
-	const navigate = useNavigate();
+const ConfirmThrift = () => {
 
+    const location = useLocation();
+	const thriftDetails = location.state;
 	const { loading, setLoading } = useContext(userContext);
 
 	const {
@@ -22,7 +23,6 @@ const NewThriftForm = () => {
 		try {
 			setLoading(true);
 			await new Promise((resolve) => setTimeout(resolve, 2000));
-			navigate("/dashboard/confirm-thrift", { state: data });
 		} catch (error) {
 			console.error("Thrift creation failed", error);
 		} finally {
@@ -48,7 +48,8 @@ const NewThriftForm = () => {
 							<label htmlFor="thriftTitle" className="">
 								Thrift title
 							</label>
-							<input
+                            <p>{thriftDetails.thriftTitle}</p>
+							{/* <input
 								id="thriftTitle"
 								type="text"
 								className="py-2 px-3 lg:py-3 border border-darkGray rounded placeholder:text-[#c5c3c3a8]"
@@ -57,7 +58,7 @@ const NewThriftForm = () => {
 								{...register("thriftTitle", {
 									required: "Thrift title is required",
 								})}
-							/>
+							/> */}
 							<span className="text-red text-sm ">
 								{errors.thriftTitle && errors.thriftTitle.message}
 							</span>
@@ -171,4 +172,4 @@ const NewThriftForm = () => {
 	);
 };
 
-export default NewThriftForm;
+export default ConfirmThrift;

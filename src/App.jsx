@@ -12,6 +12,7 @@ import VerifyEmail from "./pages/VerifyEmail";
 import Agreement from "./pages/Agreement";
 import CommunityRules from "./pages/CommunityRules";
 import JoinedCommunity from "./pages/JoinedCommunity";
+import ConfirmThrift from "./pages/ConfirmThrift";
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
           <Route path="/dashboard/invest" element={<Invest />} />
           <Route path="/dashboard/save" element={<Save />} />
           <Route path="/dashboard/save-thrift" element={<ThriftSave />} />
+          <Route path="/dashboard/confirm-thrift" element={<ConfirmThrift />} />
         </Route>
       </Routes>
     </BrowserRouter>
