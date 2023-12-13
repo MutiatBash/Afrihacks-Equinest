@@ -1,6 +1,7 @@
-import React from "react";
+import React,{useContext} from "react";
 import DashCards from "../components/DashCards";
 import Header from "../components/Header";
+import { userContext } from "../userContext";
 
 const cards = [
   {
@@ -58,12 +59,13 @@ const transactions = [
   },
 ];
 const DashOverview = () => {
+   const { emailAddress, fullName } = useContext(userContext);
   const style = {
     tableData: "flex-1",
   };
   return (
     <>
-      <Header title="Welcome back, Cynthia!" backBtn="false" />
+      <Header title={`Welcome back, ${fullName}!`}backBtn="false" />
       <div className="px-4 md:px-8 xl:px-16 mb-16">
         <div className="-mt-4 xl:-mt-10 grid-cols-1 md:grid-cols-2 grid xl:grid-cols-3 gap-8">
           {cards.map((card, index) => (
