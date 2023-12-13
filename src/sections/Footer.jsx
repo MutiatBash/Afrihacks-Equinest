@@ -6,8 +6,8 @@ const Footer = () => {
 	return (
 		<footer>
 			<div className="w-full h-full px-4 py-8 lg:py-10 lg:px-16 bg-[#fff] text-darkGray">
-				<div className="flex flex-row flex-wrap lg:flex-nowrap lg:flex-row gap-y-7 gap-x-8 lg:gap-y-0  lg:gap-x-3 lg:justify-between py-6">
-					<div className="w-[30%] lg:w-1/4">
+				<div className="flex flex-col lg:flex-nowrap lg:flex-row gap-y-5 gap-x-8 lg:gap-y-0  lg:gap-x-3 lg:justify-between py-3">
+					<div className="w-[50%] self-center lg:w-1/4">
 						<img src={Logo} />
 					</div>
 					<div className="flex flex-col gap-3 lg:gap-5 ">
@@ -88,9 +88,9 @@ const Footer = () => {
 					</div>
 				</div>
 			</div>
-			<div className="pt-2 text-sm lg:text-base text-center">
-				<div className="border-[0.3px] w-full mt-10 border-[#d9d9d971]"></div>
-				<p className="py-5 font-light">
+			<div className="lg:pt-2 text-sm lg:text-base text-center">
+				<div className="border-[0.3px] w-full lg:mt-10 border-[#d9d9d971]"></div>
+				<p className="py-3 lg:py-5 font-light">
 					2023 Equinest. All Rights Reserved
 				</p>
 			</div>

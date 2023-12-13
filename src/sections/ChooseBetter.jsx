@@ -5,14 +5,14 @@ import secondIcon from "../assets/images/investment-report.svg"
 
 const ChooseBetter = () => {
   return (
-		<section className="p-5 lg:px-16 lg:py-24 flex flex-col gap-8">
-			<div className="w-[40%]">
+		<section className="p-5 py-12 lg:px-16 lg:py-24 flex flex-col gap-6 lg:gap-8">
+			<div className="lg:w-[40%]">
 				<h3 className="text-[1.7rem] lg:text-[3.5rem] w-full lg:leading-[4.3rem] font-bold">
 					Choose Better with{" "}
 					<span className="text-primaryYellow">Equinest</span>
 				</h3>
 			</div>
-			<div className="grid md:grid-cols-4 gap-x-6 py-6 lg:pt-12 pb-[7rem]">
+			<div className="grid md:grid-cols-4 gap-6 py-6 lg:pt-12 lg:pb-[7rem]">
 				<GrayEquinestCards
 					icon={firstIcon}
 					title="Secure Transaction"

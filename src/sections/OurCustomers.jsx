@@ -49,7 +49,7 @@ export const customers = [
 
 const OurCustomers = () => {
 	return (
-		<section className="p-5 lg:px-16 lg:py-16 flex flex-col gap-10 bg-white">
+		<section className="p-5 lg:px-16 py-12 lg:py-16 flex flex-col gap-5 lg:gap-10 bg-white">
 			<h3 className="text-[1.7rem] lg:text-[3.2rem] w-full lg:leading-[4.3rem] font-bold">
 				Happy Customers
 			</h3>
