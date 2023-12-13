@@ -140,10 +140,13 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 CORS_ORIGIN_WHITELIST = (
 "http://localhost:3000",
 "http://localhost:8000",
+"http://localhost:5173",
+"http://localhost:5174",
 "https://afrihacks-equinest.vercel.app"
 )
 
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "https://afrihacks-equinest.vercel.app"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "https://afrihacks-equinest.vercel.app", "http://localhost:5173",
+"http://localhost:5174",]
 
 AUTHENTICATION_BACKENDS = (
 "django.contrib.auth.backends.ModelBackend",
