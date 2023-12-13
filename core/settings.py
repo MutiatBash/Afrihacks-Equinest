@@ -20,9 +20,9 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv('DEBUG', '0').lower() in ['true', 't', '1']
 
 
-# ALLOWED_HOSTS = []
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
 
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -179,14 +179,11 @@ SPECTACULAR_SETTINGS = {
 
 }
 
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_USERNAME_REQUIRED = False 
 ACCOUNT_AUTHENTICATION_METHOD = "email" 
 ACCOUNT_EMAIL_REQUIRED = True 
-ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_UNIQUE_EMAIL = True 
 
 ACCOUNT_FORMS = {
-    
     'signup': 'accounts.forms.CustomSignupForm',
-    
 }

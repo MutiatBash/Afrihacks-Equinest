@@ -7,21 +7,21 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = get_user_model()
         fields = (
-            "email",
-            "full_name"
+            # "username",
+            # "full_name"
         )
 
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = get_user_model()
         fields = (
-            "email",
-            "full_name",
+            # "username",
+            # "full_name",
         )
 
 class CustomSignupForm(SignupForm):
 
-    phone_number = forms.IntegerField( required=True)
+    phone_number = forms.IntegerField( required=True, label="Phone Number")
     bvn = forms.IntegerField(required=True)
     full_name =  forms.CharField(required=True)
 

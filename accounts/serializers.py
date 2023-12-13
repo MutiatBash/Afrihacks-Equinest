@@ -13,6 +13,7 @@ class CustomRegisterSerializer(RegisterSerializer):
         super(CustomRegisterSerializer, self).get_cleaned_data()
         return {
             
+          
             'email': self.validated_data.get('email', ''),
             'phone_number': self.validated_data.get('phone_number', ''),
             'bvn': self.validated_data.get('bvn', ''),
