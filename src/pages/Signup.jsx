@@ -8,6 +8,7 @@ import authLogo from "../assets/images/authLogo.svg";
 import { PrimaryButton } from "../components/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { userContext } from "../userContext";
+import axios from "axios"
 
 const Signup = () => {
 	const navigate = useNavigate();
@@ -20,23 +21,66 @@ const Signup = () => {
 		watch,
 		formState: { errors },
 	} = useForm();
-	// const onSubmit = (values) => alert(values.email + " " + values.password);
+	
+	// const onSubmit = async (data, e) => {
+	// 	e.preventDefault();
+	// 	console.log(data);
+	// 	try {
+	// 		setLoading(true);
+	// 		await new Promise((resolve) => setTimeout(resolve, 2000));
+	// 		const userEmail = data?.emailAddress;
+	// 		console.log(userEmail);
+	// 		setEmailAddress(userEmail);
+	// 		navigate("/verify-email");
+	// 	} catch (error) {
+	// 		console.error("Registration failed", error);
+	// 	} finally {
+	// 		setLoading(false);
+	// 	}
+	// };
+
 	const onSubmit = async (data, e) => {
-		e.preventDefault();
-		console.log(data);
+		e.preventDefault(); 
+
 		try {
 			setLoading(true);
-			await new Promise((resolve) => setTimeout(resolve, 2000));
-			const userEmail = data?.emailAddress;
-			console.log(userEmail);
-			setEmailAddress(userEmail);
-			navigate("/verify-email");
+
+			
+			const response = await axios.post(
+				"https://equinest.onrender.com/api/registration/",
+				data,
+				{
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json",
+					},
+				}
+			);
+
+			
+			if (response.ok) {
+				console.log("Registration successful");
+
+				
+				console.log(response.data);
+
+				const userEmail = data?.email;
+				console.log(userEmail);
+				setEmailAddress(userEmail);
+
+				navigate("/verify-email");
+			} else {
+				console.error("Registration failed. Status:", response.status);
+			}
 		} catch (error) {
 			console.error("Registration failed", error);
+
+			
 		} finally {
 			setLoading(false);
 		}
 	};
+
 
 	return (
 		<section className="flex flex-col justify-between p-5 lg:px-16 lg:py-8">
@@ -58,38 +102,34 @@ const Signup = () => {
 						</div>
 						<div className="flex flex-col gap-6">
 							<div className="flex flex-col w-full gap-2">
-								<label htmlFor="fullName" className="font-medium">
+								<label htmlFor="full_name" className="font-medium">
 									Full Name
 								</label>
 								<input
-									id="fullName"
+									id="full_name"
 									type="text"
 									className="py-2 px-3 lg:py-3 border border-darkGray rounded placeholder:text-[#c5c3c3a8]"
-									name="fullName"
+									name="full_name"
 									placeholder="Jane Doe"
-									{...register("fullName", {
+									{...register("full_name", {
 										required: "Full name is required",
-										// pattern: {
-										// 	value: /^[A-Za-z]+$/i,
-										// 	message: "Numbers and characters not allowed",
-										// },
 									})}
 								/>
 								<span className="text-red text-sm ">
-									{errors.fullName && errors.fullName.message}
+									{errors.full_name && errors.full_name.message}
 								</span>
 							</div>
 							<div className="flex flex-col w-full gap-2">
-								<label htmlFor="emailAddress" className="font-medium">
+								<label htmlFor="email" className="font-medium">
 									Email Address
 								</label>
 								<input
-									id="emailAddress"
+									id="email"
 									type="email"
 									className="signup-input-form py-2 px-3 lg:py-3 border border-darkGray rounded placeholder:text-[#c5c3c3a8]"
-									name="emailAddress"
+									name="email"
 									placeholder="Enter your email address"
-									{...register("emailAddress", {
+									{...register("email", {
 										required: "Email is required",
 										pattern: {
 											value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -98,21 +138,21 @@ const Signup = () => {
 									})}
 								/>
 								<span className="text-red text-sm ">
-									{errors.emailAddress && errors.emailAddress.message}
+									{errors.email && errors.email.message}
 								</span>
 							</div>
 
 							<div className="flex flex-col w-full gap-2">
-								<label htmlFor="phoneNumber" className="font-medium">
+								<label htmlFor="phone_number" className="font-medium">
 									Phone Number
 								</label>
 								<input
-									id="phoneNumber"
+									id="phone_number"
 									type="number"
 									className=" py-2 px-3 lg:py-3 border border-darkGray rounded placeholder:text-[#c5c3c3a8]"
-									name="phoneNumber"
+									name="phone_number"
 									placeholder="08078954124"
-									{...register("phoneNumber", {
+									{...register("phone_number", {
 										required: "Phone number is required",
 										// pattern: {
 										// 	value: /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/,
@@ -122,7 +162,7 @@ const Signup = () => {
 									})}
 								/>
 								<span className="text-red text-sm ">
-									{errors.phoneNumber && errors.phoneNumber.message}
+									{errors.phone_number && errors.phone_number.message}
 								</span>
 							</div>
 
@@ -146,16 +186,16 @@ const Signup = () => {
 							</div>
 
 							<div className="flex flex-col w-full gap-2">
-								<label htmlFor="password" className="font-medium">
+								<label htmlFor="password1" className="font-medium">
 									Password
 								</label>
 								<input
-									id="password"
+									id="password1"
 									type="password"
 									className=" py-2 px-3 lg:py-3 border border-darkGray rounded placeholder:text-[#c5c3c3a8]"
-									name="password"
+									name="password1"
 									placeholder="********"
-									{...register("password", {
+									{...register("password1", {
 										required: "Password is required",
 										pattern: {
 											value: /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/,
@@ -165,32 +205,32 @@ const Signup = () => {
 									})}
 								/>
 								<span className="text-red text-sm ">
-									{errors.password && errors.password.message}
+									{errors.password1 && errors.password1.message}
 								</span>
 							</div>
 							<div className="flex flex-col w-full gap-2">
 								<label
-									htmlFor="confirmPassword"
+									htmlFor="password2"
 									className="font-medium"
 								>
 									Confirm Password
 								</label>
 								<input
-									id="confirmPassword"
+									id="password2"
 									type="password"
 									className=" py-2 px-3 lg:py-3 border border-darkGray rounded placeholder:text-[#c5c3c3a8]"
 									name="confirmPassword"
 									placeholder="********"
-									{...register("confirmPassword", {
+									{...register("password2", {
 										required: "Confirm your password",
 										validate: (value) =>
-											value === watch("password") ||
+											value === watch("password1") ||
 											"Passwords do not match",
 									})}
 								/>
 								<span className="text-red text-sm ">
-									{errors.confirmPassword &&
-										errors.confirmPassword.message}
+									{errors.password2 &&
+										errors.password2.message}
 								</span>
 							</div>
 						</div>
