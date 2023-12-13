@@ -32,7 +32,9 @@ const Header = ({ title, backBtn }) => {
       <div className="bg-lightGray text-white h-56 px-4 md:px-8 xl:px-16">
         <nav className="flex justify-between items-center pt-8">
           <div className="flex gap-12">
-            <img src={logo} alt="logo" />
+            <Link to="/">
+              <img src={logo} alt="logo" className="cursor-pointer" />
+            </Link>
             <div className="hidden lg:flex items-center gap-x-6">
               <Link
                 to="/dashboard"
