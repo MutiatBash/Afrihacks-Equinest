@@ -8,7 +8,9 @@ import { userContext } from "../userContext";
 import Header from "./Header";
 
 const NewThriftForm = () => {
-  const { loading, setLoading } = useContext(userContext);
+	const navigate = useNavigate();
+
+	const { loading, setLoading } = useContext(userContext);
 
   const {
     handleSubmit,
@@ -22,6 +24,7 @@ const NewThriftForm = () => {
     try {
       setLoading(true);
       await new Promise((resolve) => setTimeout(resolve, 2000));
+			navigate("/dashboard/confirm-thrift", { state: data });
     } catch (error) {
       console.error("Thrift creation failed", error);
     } finally {
